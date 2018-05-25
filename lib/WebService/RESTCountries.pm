@@ -26,6 +26,23 @@ sub BUILD {
     return $self;
 }
 
+sub _request {
+    my ($self, $endpoint, $queries) = @_;
+
+    $endpoint ||= q||;
+    $queries ||= {};
+
+    # In case the api_url was updated.
+    $self->server($self->api_url);
+    $self->type(qq|application/json|);
+
+    my $path = $endpoint . "/";
+
+    my $response = $self->get($path, $queries);
+
+    return $response->data;
+}
+
 
 1;
 __END__
