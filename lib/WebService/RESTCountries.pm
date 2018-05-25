@@ -1,8 +1,31 @@
 package WebService::RESTCountries;
 
-use strict;
-use 5.008_005;
+use utf8;
+use Moo;
+use Types::Standard qw(Str);
+use strictures 2;
+use namespace::clean;
+
+with 'Role::REST::Client';
+
 our $VERSION = '0.01';
+
+has api_url => (
+    isa => Str,
+    is => 'rw',
+    default => sub { 'https://restcountries.eu/rest/v2/' },
+);
+
+sub BUILD {
+    my ($self) = @_;
+
+    $self->set_persistent_header('User-Agent' => __PACKAGE__ . q| |
+          . ($WebService::RESTCountries || q||));
+    $self->server($self->api_url);
+
+    return $self;
+}
+
 
 1;
 __END__
@@ -22,6 +45,22 @@ WebService::RESTCountries - A Perl module to interface with the REST Countries
 
 WebService::RESTCountries is a Perl client helper library for the REST
 Countries API (restcountries.eu).
+
+=head1 METHODS
+
+=head2 new([%$args])
+
+Construct a new WebService::RESTCountries instance. Optionally takes a hash or hash reference.
+
+    # Instantiate the class.
+    my $api = WebService::RESTCountries->new;
+
+=head3 api_url
+
+The URL of the API resource.
+
+    # Instantiate the class by setting the URL of the API endpoints.
+    my $api = WebService::RESTCountries->new(api_url => 'https://example.com/v2/');
 
 =head1 COPYRIGHT AND LICENSE
 
