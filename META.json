@@ -26,7 +26,8 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "Module::Build::Tiny" : "0.034"
+            "Module::Build::Tiny" : "0.034",
+            "perl" : "5.008005"
          }
       },
       "develop" : {
@@ -43,12 +44,17 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.008005"
+            "Moo" : "0",
+            "Role::REST::Client" : "0",
+            "Types::Standard" : "0",
+            "namespace::clean" : "0",
+            "strictures" : "2"
          }
       },
       "test" : {
          "requires" : {
-            "Test::More" : "0.96"
+            "Test::More" : "0",
+            "Test::Warn" : "0"
          }
       }
    },
