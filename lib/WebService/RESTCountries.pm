@@ -34,6 +34,8 @@ sub search_all {
 
 sub search_by_country_name {
     my ($self, $name) = @_;
+
+    return $self->_request(qq|name/$name|);
 }
 
 sub search_by_country_full_name {
@@ -134,7 +136,17 @@ Get all the countries.
 =head2 search_by_country_code
 =head2 search_by_country_codes
 =head2 search_by_country_full_name
-=head2 search_by_country_name
+
+=head2 search_by_country_name($name)
+
+Get the details of a country by name, either by native or partial name.
+
+    # Native name.
+    $api->search_by_country_name("Malaysia");
+
+    # Partial name.
+    $api->search_by_country_name("Malays");
+
 =head2 search_by_currency
 =head2 search_by_language_code
 =head2 search_by_region

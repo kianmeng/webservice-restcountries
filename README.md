@@ -37,8 +37,18 @@ Get all the countries.
 =head2 search\_by\_country\_code
 =head2 search\_by\_country\_codes
 =head2 search\_by\_country\_full\_name
-=head2 search\_by\_country\_name
-=head2 search\_by\_currency
+
+## search\_by\_country\_name($name)
+
+Get the details of a country by name, either by native or partial name.
+
+    # Native name.
+    $api->search_by_country_name("Malaysia");
+
+    # Partial name.
+    $api->search_by_country_name("Malays");
+
+## search\_by\_currency
 =head2 search\_by\_language\_code
 =head2 search\_by\_region
 =head2 search\_by\_regional\_bloc
