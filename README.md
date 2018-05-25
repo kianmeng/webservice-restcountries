@@ -28,6 +28,18 @@ The URL of the API resource.
     # Instantiate the class by setting the URL of the API endpoints.
     my $api = WebService::RESTCountries->new(api_url => 'https://example.com/v2/');
 
+## search\_all
+=head2 search\_by\_calling\_code
+=head2 search\_by\_capital\_city
+=head2 search\_by\_country\_code
+=head2 search\_by\_country\_codes
+=head2 search\_by\_country\_full\_name
+=head2 search\_by\_country\_name
+=head2 search\_by\_currency
+=head2 search\_by\_language\_code
+=head2 search\_by\_region
+=head2 search\_by\_regional\_bloc
+
 # COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2018 by Kian Meng, Ang.

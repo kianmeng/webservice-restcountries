@@ -26,6 +26,50 @@ sub BUILD {
     return $self;
 }
 
+sub search_all {
+    my ($self) = @_;
+}
+
+sub search_by_country_name {
+    my ($self, $name) = @_;
+}
+
+sub search_by_country_full_name {
+    my ($self, $full_name) = @_;
+}
+
+sub search_by_country_code {
+    my ($self, $country_code) = @_;
+}
+
+sub search_by_country_codes {
+    my ($self, $country_codes) = @_;
+}
+
+sub search_by_currency {
+    my ($self, $currency) = @_;
+}
+
+sub search_by_language_code {
+    my ($self, $language_code) = @_;
+}
+
+sub search_by_capital_city {
+    my ($self, $capital_city) = @_;
+}
+
+sub search_by_calling_code {
+    my ($self, $calling_code) = @_;
+}
+
+sub search_by_region {
+    my ($self, $region) = @_;
+}
+
+sub search_by_regional_bloc {
+    my ($self, $region_bloc) = @_;
+}
+
 sub _request {
     my ($self, $endpoint, $queries) = @_;
 
@@ -78,6 +122,18 @@ The URL of the API resource.
 
     # Instantiate the class by setting the URL of the API endpoints.
     my $api = WebService::RESTCountries->new(api_url => 'https://example.com/v2/');
+
+=head2 search_all
+=head2 search_by_calling_code
+=head2 search_by_capital_city
+=head2 search_by_country_code
+=head2 search_by_country_codes
+=head2 search_by_country_full_name
+=head2 search_by_country_name
+=head2 search_by_currency
+=head2 search_by_language_code
+=head2 search_by_region
+=head2 search_by_regional_bloc
 
 =head1 COPYRIGHT AND LICENSE
 
