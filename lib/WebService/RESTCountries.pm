@@ -20,7 +20,7 @@ sub BUILD {
     my ($self) = @_;
 
     $self->set_persistent_header('User-Agent' => __PACKAGE__ . q| |
-          . ($WebService::RESTCountries || q||));
+          . ($WebService::RESTCountries::VERSION || q||));
     $self->server($self->api_url);
 
     return $self;
