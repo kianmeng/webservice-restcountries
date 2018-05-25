@@ -28,6 +28,8 @@ sub BUILD {
 
 sub search_all {
     my ($self) = @_;
+
+    return $self->_request('all');
 }
 
 sub search_by_country_name {
@@ -123,7 +125,10 @@ The URL of the API resource.
     # Instantiate the class by setting the URL of the API endpoints.
     my $api = WebService::RESTCountries->new(api_url => 'https://example.com/v2/');
 
-=head2 search_all
+=head2 search_all()
+
+Get all the countries.
+
 =head2 search_by_calling_code
 =head2 search_by_capital_city
 =head2 search_by_country_code
