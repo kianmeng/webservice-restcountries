@@ -14,7 +14,7 @@ Countries API (restcountries.eu).
 
 # COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2017 by Kian Meng, Ang.
+This software is Copyright (c) 2018 by Kian Meng, Ang.
 
 This is free software, licensed under:
 
