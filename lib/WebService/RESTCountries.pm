@@ -96,6 +96,12 @@ sub search_by_language_code {
 
 sub search_by_capital_city {
     my ($self, $capital_city) = @_;
+
+    utf8::encode($capital_city);
+
+    my $result = $self->_request(qq|capital/$capital_city|);
+
+    return (ref $result eq 'ARRAY') ? $result->[0] : $result;
 }
 
 sub search_by_calling_code {
@@ -169,6 +175,10 @@ Get all the countries.
 
 =head2 search_by_calling_code
 =head2 search_by_capital_city
+
+Get the details of a country by its capital city.
+
+    $api->search_by_capital_city("Kuala Lumpur");
 
 =head2 search_by_country_code
 

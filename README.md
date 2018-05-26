@@ -35,6 +35,10 @@ Get all the countries.
 ## search\_by\_calling\_code
 =head2 search\_by\_capital\_city
 
+Get the details of a country by its capital city.
+
+    $api->search_by_capital_city("Kuala Lumpur");
+
 ## search\_by\_country\_code
 
 Get the details of a country by its ISO 3166 two-letters or three-letters
