@@ -106,6 +106,10 @@ sub search_by_capital_city {
 
 sub search_by_calling_code {
     my ($self, $calling_code) = @_;
+
+    my $result = $self->_request(qq|callingcode/$calling_code|);
+
+    return (ref $result eq 'ARRAY') ? $result->[0] : $result;
 }
 
 sub search_by_region {
@@ -174,6 +178,12 @@ The URL of the API resource.
 Get all the countries.
 
 =head2 search_by_calling_code
+
+Get the details of a country by its calling code, the prefixes for the country
+phone numbers.
+
+    $api->search_by_calling_code('60');
+
 =head2 search_by_capital_city
 
 Get the details of a country by its capital city.

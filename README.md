@@ -33,7 +33,13 @@ The URL of the API resource.
 Get all the countries.
 
 ## search\_by\_calling\_code
-=head2 search\_by\_capital\_city
+
+Get the details of a country by its calling code, the prefixes for the country
+phone numbers.
+
+    $api->search_by_calling_code('60');
+
+## search\_by\_capital\_city
 
 Get the details of a country by its capital city.
 
