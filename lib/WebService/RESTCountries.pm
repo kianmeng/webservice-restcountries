@@ -114,6 +114,10 @@ sub search_by_calling_code {
 
 sub search_by_region {
     my ($self, $region) = @_;
+
+    $region = lc($region);
+
+    return $self->_request(qq|region/$region|);
 }
 
 sub search_by_regional_bloc {
@@ -231,6 +235,13 @@ Get the details of the a country by ISO 639-1 language code.
     $api->search_by_language_code("ms");
 
 =head2 search_by_region
+
+Get list of country by region: Africa, Americas, Asia, Europe, Oceania. Region
+name is case insensitive.
+
+    $api->search_by_region("Asia");
+    $api->search_by_region("asia");
+
 =head2 search_by_regional_bloc
 
 =head1 COPYRIGHT AND LICENSE

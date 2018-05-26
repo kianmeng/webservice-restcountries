@@ -86,7 +86,14 @@ Get the details of the a country by ISO 639-1 language code.
     $api->search_by_language_code("ms");
 
 ## search\_by\_region
-=head2 search\_by\_regional\_bloc
+
+Get list of country by region: Africa, Americas, Asia, Europe, Oceania. Region
+name is case insensitive.
+
+    $api->search_by_region("Asia");
+    $api->search_by_region("asia");
+
+## search\_by\_regional\_bloc
 
 # COPYRIGHT AND LICENSE
 
