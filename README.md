@@ -70,7 +70,12 @@ Get the details of a country by ISO 4217 currency code.
     $api->search_by_currency("MYR");
 
 ## search\_by\_language\_code
-=head2 search\_by\_region
+
+Get the details of the a country by ISO 639-1 language code.
+
+    $api->search_by_language_code("ms");
+
+## search\_by\_region
 =head2 search\_by\_regional\_bloc
 
 # COPYRIGHT AND LICENSE

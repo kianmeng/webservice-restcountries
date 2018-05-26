@@ -88,6 +88,10 @@ sub search_by_currency {
 
 sub search_by_language_code {
     my ($self, $language_code) = @_;
+
+    $language_code = lc($language_code);
+
+    return $self->_request(qq|lang/$language_code|);
 }
 
 sub search_by_capital_city {
@@ -201,6 +205,11 @@ Get the details of a country by ISO 4217 currency code.
     $api->search_by_currency("MYR");
 
 =head2 search_by_language_code
+
+Get the details of the a country by ISO 639-1 language code.
+
+    $api->search_by_language_code("ms");
+
 =head2 search_by_region
 =head2 search_by_regional_bloc
 
