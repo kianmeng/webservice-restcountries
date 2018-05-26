@@ -19,6 +19,9 @@ is($got->[0]->{capital}, "Kuala Lumpur", 'expect country found by partial name')
 $got = $api->search_by_country_name("Korea (Democratic People's Republic of)");
 is($got->[0]->{capital}, "Pyongyang", 'expect country found by long multi-words name');
 
+$got = $api->search_by_country_name("São Tomé");
+is($got->[0]->{capital}, "São Tomé", 'expect country found by special characters name');
+
 $got = $api->search_by_country_name("Foo Bar");
 my $expected = {
     'message' => 'Not Found',

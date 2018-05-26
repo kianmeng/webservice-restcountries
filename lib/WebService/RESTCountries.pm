@@ -35,6 +35,8 @@ sub search_all {
 sub search_by_country_name {
     my ($self, $name) = @_;
 
+    utf8::encode($name);
+
     return $self->_request(qq|name/$name|);
 }
 
