@@ -252,14 +252,14 @@ calls.
 
 Get all the countries.
 
-=head2 search_by_calling_code
+=head2 search_by_calling_code($calling_code)
 
 Get the details of a country by its calling code, the prefixes for the country
 phone numbers.
 
     $api->search_by_calling_code('60');
 
-=head2 search_by_capital_city
+=head2 search_by_capital_city($capital_city)
 
 Get the details of a country by its capital city.
 
@@ -269,7 +269,7 @@ Get the details of a country by its capital city.
     # Partial name.
     $api->search_by_capital_city("Kuala");
 
-=head2 search_by_country_code
+=head2 search_by_country_code($country_code)
 
 Get the details of a country by its ISO 3166 two-letters or three-letters
 country code.
@@ -280,7 +280,7 @@ country code.
     # Three-letters.
     $api->search_by_country_code("MYS");
 
-=head2 search_by_country_codes
+=head2 search_by_country_codes($country_codes)
 
 Get the list of country by multiple ISO 3166 two-letters or three-letters
 country codes.
@@ -291,7 +291,7 @@ country codes.
     # Three-letters.
     $api->search_by_country_codes(['MYS', 'SGP']);
 
-=head2 search_by_country_full_name
+=head2 search_by_country_full_name($full_name)
 
 Get the details of a country by its full name.
 
@@ -307,19 +307,19 @@ Get the details of a country by name, either by native or partial name.
     # Partial name.
     $api->search_by_country_name("Malays");
 
-=head2 search_by_currency
+=head2 search_by_currency($currency)
 
 Get the details of a country by ISO 4217 currency code.
 
     $api->search_by_currency("MYR");
 
-=head2 search_by_language_code
+=head2 search_by_language_code($language_code)
 
 Get the details of the a country by ISO 639-1 language code.
 
     $api->search_by_language_code("ms");
 
-=head2 search_by_region
+=head2 search_by_region($region)
 
 Get list of country by region: Africa, Americas, Asia, Europe, Oceania. Region
 name is case insensitive.
@@ -327,7 +327,7 @@ name is case insensitive.
     $api->search_by_region("Asia");
     $api->search_by_region("asia");
 
-=head2 search_by_regional_bloc
+=head2 search_by_regional_bloc($regional_bloc)
 
 Get list of country by regional bloc: EU, EFTA, CARICOM, PA, AU, USAN, EEU, AL,
 ASEAN, CAIS, CEFTA, NAFTA, SAARC. Regional bloc name is case insensitive.
