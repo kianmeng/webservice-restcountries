@@ -1,6 +1,7 @@
 Revision history for WebService-RESTCountries
 
 {{$NEXT}}
+        - Add filtering by fields
 
 0.01  2018-05-26 23:28:30 +08
         - Initial release
