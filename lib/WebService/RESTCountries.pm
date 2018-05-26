@@ -52,6 +52,10 @@ sub search_by_country_full_name {
 
 sub search_by_country_code {
     my ($self, $country_code) = @_;
+
+    my $result = $self->_request(qq|alpha/$country_code|);
+
+    return (ref $result eq 'ARRAY') ? $result->[0] : $result;
 }
 
 sub search_by_country_codes {
@@ -141,7 +145,18 @@ Get all the countries.
 
 =head2 search_by_calling_code
 =head2 search_by_capital_city
+
 =head2 search_by_country_code
+
+Get the details of a country by its ISO 3166 two-letters or three-letters
+country code.
+
+    # Two-letters.
+    $api->search_by_country_code("MY");
+
+    # Three-letters.
+    $api->search_by_country_code("MYS");
+
 =head2 search_by_country_codes
 =head2 search_by_country_full_name
 

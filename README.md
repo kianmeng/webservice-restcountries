@@ -34,8 +34,19 @@ Get all the countries.
 
 ## search\_by\_calling\_code
 =head2 search\_by\_capital\_city
-=head2 search\_by\_country\_code
-=head2 search\_by\_country\_codes
+
+## search\_by\_country\_code
+
+Get the details of a country by its ISO 3166 two-letters or three-letters
+country code.
+
+    # Two-letters.
+    $api->search_by_country_code("MY");
+
+    # Three-letters.
+    $api->search_by_country_code("MYS");
+
+## search\_by\_country\_codes
 =head2 search\_by\_country\_full\_name
 
 Get the details of a country by its full name.
