@@ -90,6 +90,13 @@ calls.
     $api->fields(['capital', 'currencies', 'name']);
     my $counties = $api->search_all();
 
+## ping()
+
+Check whether the API endpoint is currently up.
+
+    # Returns 1 if up and 0 otherwise.
+    $api->ping();
+
 ## search\_all()
 
 Get all the countries.

@@ -32,6 +32,14 @@ sub BUILD {
     return $self;
 }
 
+sub ping {
+    my ($self) = @_;
+
+    my $response = $self->user_agent->request('HEAD', $self->api_url);
+
+    return ($response->code == 200) ? 1 : 0;
+}
+
 sub search_all {
     my ($self) = @_;
 
@@ -247,6 +255,13 @@ calls.
     # Set through method.
     $api->fields(['capital', 'currencies', 'name']);
     my $counties = $api->search_all();
+
+=head2 ping()
+
+Check whether the API endpoint is currently up.
+
+    # Returns 1 if up and 0 otherwise.
+    $api->ping();
 
 =head2 search_all()
 
