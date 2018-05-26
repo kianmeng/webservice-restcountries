@@ -53,6 +53,8 @@ sub search_by_country_full_name {
 sub search_by_country_code {
     my ($self, $country_code) = @_;
 
+    $country_code = lc($country_code);
+
     my $result = $self->_request(qq|alpha/$country_code|);
 
     return (ref $result eq 'ARRAY') ? $result->[0] : $result;
@@ -60,6 +62,18 @@ sub search_by_country_code {
 
 sub search_by_country_codes {
     my ($self, $country_codes) = @_;
+
+    my @lowercase_country_codes = map { lc } @$country_codes;
+
+    my $query = {
+        codes => join(';', @lowercase_country_codes)
+    };
+
+    my $result = $self->_request(qq|alpha|, $query);
+
+    return $result if (defined $result->[0]);
+
+    return;
 }
 
 sub search_by_currency {
