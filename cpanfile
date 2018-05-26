@@ -15,6 +15,9 @@ on configure => sub {
 on test => sub {
     requires 'Test::More';
     requires 'Test::Warn';
+    requires 'Test::Kwalitee';
+    requires 'Test::HasVersion';
+    requires 'Test::DistManifest';
 };
 
 on 'develop' => sub {
