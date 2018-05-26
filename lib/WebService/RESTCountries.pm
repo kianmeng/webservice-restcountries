@@ -233,6 +233,21 @@ The URL of the API resource.
     # Instantiate the class by setting the URL of the API endpoints.
     my $api = WebService::RESTCountries->new(api_url => 'https://example.com/v2/');
 
+    # Set through method.
+    $api->api_url('https://example.com/v2/');
+
+=head3 fields
+
+Show the country data in specified fields. Do this before making any webservice
+calls.
+
+    # Instantiate the class by setting the selected fields.
+    my $api = WebService::RESTCountries->new(fields => ['capital', 'currencies', 'name']);
+
+    # Set through method.
+    $api->fields(['capital', 'currencies', 'name']);
+    my $counties = $api->search_all();
+
 =head2 search_all()
 
 Get all the countries.
