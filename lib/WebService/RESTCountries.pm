@@ -2,7 +2,7 @@ package WebService::RESTCountries;
 
 use utf8;
 use Moo;
-use Types::Standard qw(Str);
+use Types::Standard qw(Str ArrayRef);
 use strictures 2;
 use namespace::clean;
 
@@ -14,6 +14,12 @@ has api_url => (
     isa => Str,
     is => 'rw',
     default => sub { 'https://restcountries.eu/rest/v2/' },
+);
+
+has fields => (
+    isa => ArrayRef[Str],
+    is => 'rw',
+    default => sub { [] },
 );
 
 sub BUILD {
@@ -135,14 +141,16 @@ sub _request {
 
     $queries ||= {};
 
+    # ?fields=name;capital;currencies
+    if (scalar @{$self->fields}) {
+        $queries->{fields} = join(';', @{$self->fields});
+    }
+
     # In case the api_url was updated.
     $self->server($self->api_url);
     $self->type(qq|application/json|);
 
-    my $path = $endpoint . "/";
-
-    # Remove double slashes as some endpoints missing values.
-    $path =~ s/\/\/$/\//;
+    my $path = $endpoint;
 
     my $response = $self->get($path, $queries);
 
@@ -240,7 +248,11 @@ phone numbers.
 
 Get the details of a country by its capital city.
 
+    # Full name.
     $api->search_by_capital_city("Kuala Lumpur");
+
+    # Partial name.
+    $api->search_by_capital_city("Kuala");
 
 =head2 search_by_country_code
 

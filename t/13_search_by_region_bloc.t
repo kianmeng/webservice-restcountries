@@ -38,4 +38,10 @@ $expected = {
 };
 is_deeply($got, $expected, 'expect not found');
 
+my $expected_fields = ['capital', 'currencies', 'name'];
+$api->fields($expected_fields);
+$got = $api->search_by_regional_bloc('NAFTA');
+my @got_fields = sort keys %{$got->[0]};
+is_deeply(\@got_fields, $expected_fields, 'expect selected fields match');
+
 done_testing;

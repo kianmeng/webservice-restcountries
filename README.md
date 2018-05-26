@@ -90,7 +90,11 @@ phone numbers.
 
 Get the details of a country by its capital city.
 
+    # Full name.
     $api->search_by_capital_city("Kuala Lumpur");
+
+    # Partial name.
+    $api->search_by_capital_city("Kuala");
 
 ## search\_by\_country\_code
 

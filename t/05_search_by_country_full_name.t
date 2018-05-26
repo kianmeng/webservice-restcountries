@@ -27,4 +27,10 @@ foreach my $k (keys %$test_data) {
     is($got->{name}, $test_data->{$k}, "expect country $k $status");
 }
 
+my $expected_fields = ['capital', 'currencies', 'name'];
+$api->fields($expected_fields);
+$got = $api->search_by_country_full_name('Malaysia');
+my @got_fields = sort keys %{$got};
+is_deeply(\@got_fields, $expected_fields, 'expect selected fields match');
+
 done_testing;
