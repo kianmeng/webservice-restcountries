@@ -64,7 +64,12 @@ Get the details of a country by name, either by native or partial name.
     $api->search_by_country_name("Malays");
 
 ## search\_by\_currency
-=head2 search\_by\_language\_code
+
+Get the details of a country by ISO 4217 currency code.
+
+    $api->search_by_currency("MYR");
+
+## search\_by\_language\_code
 =head2 search\_by\_region
 =head2 search\_by\_regional\_bloc
 

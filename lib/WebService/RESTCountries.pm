@@ -78,6 +78,12 @@ sub search_by_country_codes {
 
 sub search_by_currency {
     my ($self, $currency) = @_;
+
+    $currency = lc($currency);
+
+    my $result = $self->_request(qq|currency/$currency|);
+
+    return (ref $result eq 'ARRAY') ? $result->[0] : $result;
 }
 
 sub search_by_language_code {
@@ -189,6 +195,11 @@ Get the details of a country by name, either by native or partial name.
     $api->search_by_country_name("Malays");
 
 =head2 search_by_currency
+
+Get the details of a country by ISO 4217 currency code.
+
+    $api->search_by_currency("MYR");
+
 =head2 search_by_language_code
 =head2 search_by_region
 =head2 search_by_regional_bloc
