@@ -131,7 +131,8 @@ sub search_by_regional_bloc {
 sub _request {
     my ($self, $endpoint, $queries) = @_;
 
-    $endpoint ||= q||;
+    return if (!defined $endpoint || length $endpoint <= 0);
+
     $queries ||= {};
 
     # In case the api_url was updated.
@@ -139,6 +140,9 @@ sub _request {
     $self->type(qq|application/json|);
 
     my $path = $endpoint . "/";
+
+    # Remove double slashes as some endpoints missing values.
+    $path =~ s/\/\/$/\//;
 
     my $response = $self->get($path, $queries);
 

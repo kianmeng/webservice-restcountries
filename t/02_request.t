@@ -6,12 +6,12 @@ use Test::More;
 
 use WebService::RESTCountries;
 
-my ($response, $expect) = ('', '');
+my ($got, $expect) = ('', '');
 
 my $api = WebService::RESTCountries->new;
 
-$expect = {};
-$response = $api->_request();
-is_deeply($response, $expect, 'expect empty response');
+$expect = undef;
+$got = $api->_request();
+is_deeply($got, $expect, 'expect empty response');
 
 done_testing;
