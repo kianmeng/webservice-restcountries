@@ -2,6 +2,9 @@ Revision history for WebService-RESTCountries
 
 {{$NEXT}}
 
+0.2  2018-05-27 02:32:52 +08
+        - Add ping method to check whether the API endpoint is up
+
 0.1  2018-05-27 00:52:03 +08
         - Add filtering by fields
 
