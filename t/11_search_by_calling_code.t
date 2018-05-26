@@ -24,6 +24,6 @@ $expected = {
     'message' => 'Not Found',
     'status' => 404
 };
-is_deeply($got, $expected, 'expected not found');
+is_deeply($got, $expected, 'expect not found');
 
 done_testing;

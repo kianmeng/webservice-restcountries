@@ -24,7 +24,7 @@ $expected = {
     'message' => 'Bad Request',
     'status' => 400
 };
-is_deeply($got, $expected, 'expected bad request');
+is_deeply($got, $expected, 'expect bad request');
 is($got->{name}, undef, 'expect country not found by invalid capital city');
 
 done_testing;
