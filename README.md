@@ -95,6 +95,12 @@ name is case insensitive.
 
 ## search\_by\_regional\_bloc
 
+Get list of country by regional bloc: EU, EFTA, CARICOM, PA, AU, USAN, EEU, AL,
+ASEAN, CAIS, CEFTA, NAFTA, SAARC. Regional bloc name is case insensitive.
+
+    $api->search_by_region_bloc("EU");
+    $api->search_by_regional_bloc("asean");
+
 # COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2018 by Kian Meng, Ang.

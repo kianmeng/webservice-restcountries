@@ -121,7 +121,11 @@ sub search_by_region {
 }
 
 sub search_by_regional_bloc {
-    my ($self, $region_bloc) = @_;
+    my ($self, $regional_bloc) = @_;
+
+    $regional_bloc = lc($regional_bloc);
+
+    return $self->_request(qq|regionalbloc/$regional_bloc|);
 }
 
 sub _request {
@@ -243,6 +247,12 @@ name is case insensitive.
     $api->search_by_region("asia");
 
 =head2 search_by_regional_bloc
+
+Get list of country by regional bloc: EU, EFTA, CARICOM, PA, AU, USAN, EEU, AL,
+ASEAN, CAIS, CEFTA, NAFTA, SAARC. Regional bloc name is case insensitive.
+
+    $api->search_by_region_bloc("EU");
+    $api->search_by_regional_bloc("asean");
 
 =head1 COPYRIGHT AND LICENSE
 
