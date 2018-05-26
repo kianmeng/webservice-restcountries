@@ -160,6 +160,9 @@ WebService::RESTCountries - A Perl module to interface with the REST Countries
 
   use WebService::RESTCountries;
 
+  my $api = WebService::RESTCountries->new;
+  $api->search_all();
+
 =head1 DESCRIPTION
 
 WebService::RESTCountries is a Perl client helper library for the REST

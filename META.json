@@ -59,6 +59,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/kianmeng/webservice-restcountries/issues"
+      },
+      "homepage" : "https://github.com/kianmeng/webservice-restcountries",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/kianmeng/webservice-restcountries.git",
+         "web" : "https://github.com/kianmeng/webservice-restcountries"
+      }
+   },
    "version" : "0.01",
    "x_contributors" : [
       "Kian-Meng, Ang <kianmeng@users.noreply.github.com>"
