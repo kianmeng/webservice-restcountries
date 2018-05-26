@@ -104,7 +104,17 @@ country code.
     $api->search_by_country_code("MYS");
 
 ## search\_by\_country\_codes
-=head2 search\_by\_country\_full\_name
+
+Get the list of country by multiple ISO 3166 two-letters or three-letters
+country codes.
+
+    # Two-letters.
+    $api->search_by_country_codes(['MY', 'SG']);
+
+    # Three-letters.
+    $api->search_by_country_codes(['MYS', 'SGP']);
+
+## search\_by\_country\_full\_name
 
 Get the details of a country by its full name.
 
