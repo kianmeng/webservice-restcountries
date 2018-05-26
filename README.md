@@ -38,6 +38,10 @@ Get all the countries.
 =head2 search\_by\_country\_codes
 =head2 search\_by\_country\_full\_name
 
+Get the details of a country by its full name.
+
+    $api->search_by_country_full_name("São Tomé and Príncipe");
+
 ## search\_by\_country\_name($name)
 
 Get the details of a country by name, either by native or partial name.

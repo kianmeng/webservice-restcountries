@@ -40,6 +40,12 @@ sub search_by_country_name {
 
 sub search_by_country_full_name {
     my ($self, $full_name) = @_;
+
+    utf8::encode($full_name);
+
+    my $result = $self->_request(qq|name/$full_name|, {fullText => 'true'});
+
+    return (ref $result eq 'ARRAY') ? $result->[0] : $result;
 }
 
 sub search_by_country_code {
@@ -136,6 +142,10 @@ Get all the countries.
 =head2 search_by_country_code
 =head2 search_by_country_codes
 =head2 search_by_country_full_name
+
+Get the details of a country by its full name.
+
+    $api->search_by_country_full_name("São Tomé and Príncipe");
 
 =head2 search_by_country_name($name)
 
