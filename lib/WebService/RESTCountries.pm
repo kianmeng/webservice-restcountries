@@ -265,7 +265,9 @@ Check whether the API endpoint is currently up.
 
 =head2 search_all()
 
-Get all the countries.
+Get all the countries. Basically just pull the whole data in JSON format.
+
+    $api->search_all();
 
 =head2 search_by_calling_code($calling_code)
 
