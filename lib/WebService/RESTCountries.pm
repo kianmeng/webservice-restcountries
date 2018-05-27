@@ -158,9 +158,7 @@ sub _request {
     $self->server($self->api_url);
     $self->type(qq|application/json|);
 
-    my $path = $endpoint;
-
-    my $response = $self->get($path, $queries);
+    my $response = $self->get($endpoint, $queries);
 
     return $response->data;
 }
