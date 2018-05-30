@@ -40,6 +40,19 @@ sub ping {
     return ($response->code == 200) ? 1 : 0;
 }
 
+sub download {
+    my ($self, $file_name) = @_;
+
+    $file_name ||= 'RESTCountries.json';
+
+    my $uri = $self->api_url . 'all';
+    my $response = $self->user_agent->request('GET', $uri);
+
+    open(my $fh, '>', $file_name) or die $!;
+    print $fh $response->decoded_content;
+    close($fh);
+}
+
 sub search_all {
     my ($self) = @_;
 
