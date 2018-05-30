@@ -97,9 +97,26 @@ Check whether the API endpoint is currently up.
     # Returns 1 if up and 0 otherwise.
     $api->ping();
 
+## download(\[$file\_name\])
+
+Download the whole countries data as JSON file. Optional path and file name.
+
+    # Using default path and file name.
+    $api->download();
+
+    # Using specific path and file name.
+    $api->download('/tmp/countries.json');
+
+Check whether the API endpoint is currently up.
+
+    # Returns 1 if up and 0 otherwise.
+    $api->ping();
+
 ## search\_all()
 
-Get all the countries.
+Get all the countries. Basically just pull the whole data in JSON format.
+
+    $api->search_all();
 
 ## search\_by\_calling\_code($calling\_code)
 
