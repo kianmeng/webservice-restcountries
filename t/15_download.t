@@ -13,9 +13,11 @@ $api->download();
 
 $expected = 'RESTCountries.json';
 is(-e $expected, 1, "expect downloaded file found in $expected");
+unlink($expected);
 
 $expected = '/tmp/RESTCountries.json';
 $api->download($expected);
-is(-e $expected, 1, "expect downloaded file found");
+is(-e $expected, 1, "expect downloaded file found in $expected");
+unlink($expected);
 
 done_testing;
