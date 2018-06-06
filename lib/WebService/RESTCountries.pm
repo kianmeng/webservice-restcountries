@@ -12,7 +12,7 @@ use Types::Standard qw(Str ArrayRef);
 
 with 'Role::REST::Client';
 
-our $VERSION = '0.2';
+our $VERSION = '0.3';
 
 has api_url => (
     isa => Str,
