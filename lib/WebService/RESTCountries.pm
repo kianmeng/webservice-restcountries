@@ -1,10 +1,14 @@
 package WebService::RESTCountries;
 
 use utf8;
-use Moo;
-use Types::Standard qw(Str ArrayRef);
 use strictures 2;
 use namespace::clean;
+
+use CHI;
+use Digest::MD5 qw(md5_hex);
+use Moo;
+use Sereal qw(encode_sereal decode_sereal);
+use Types::Standard qw(Str ArrayRef);
 
 with 'Role::REST::Client';
 
@@ -21,6 +25,22 @@ has fields => (
     is => 'rw',
     default => sub { [] },
 );
+
+has cache => (
+    is      => 'rw',
+    lazy    => 1,
+    builder => 1,
+);
+
+sub _build_cache {
+    my $self = shift;
+
+    return CHI->new(
+        driver => 'File',
+        namespace => 'restcountries',
+        root_dir => '/tmp/cache/',
+    );
+}
 
 sub BUILD {
     my ($self) = @_;
@@ -171,9 +191,21 @@ sub _request {
     $self->server($self->api_url);
     $self->type(qq|application/json|);
 
-    my $response = $self->get($endpoint, $queries);
+    my $response_data;
+    my $cache_key = md5_hex($endpoint . encode_sereal($queries));
 
-    return $response->data;
+    my $cache_response_data = $self->cache->get($cache_key);
+    if (defined $cache_response_data) {
+        $response_data = decode_sereal($cache_response_data);
+    }
+    else {
+        my $response = $self->get($endpoint, $queries);
+        $response_data = $response->data;
+
+        $self->cache->set($cache_key, encode_sereal($response->data));
+    }
+
+    return $response_data;
 }
 
 
