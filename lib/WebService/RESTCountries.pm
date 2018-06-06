@@ -287,6 +287,27 @@ The URL of the API resource.
     # Set through method.
     $api->api_url('https://example.com/v2/');
 
+=head3 cache
+
+The cache engine used to cache the web service API calls. By default, it uses
+file-based caching.
+
+    # Instantiate the class by setting the cache engine.
+    my $api = WebService::RESTCountries->new(
+        CHI->new(
+            driver => 'File',
+            namespace => 'restcountries',
+            root_dir => $ENV{PWD} . '/tmp/cache/'
+        )
+    );
+
+    # Set through method.
+    $api->cache(CHI->new(
+        driver => 'File',
+        namespace => 'restcountries',
+        root_dir => $ENV{PWD} . '/tmp/cache/'
+    ));
+
 =head3 fields
 
 Show the country data in specified fields. Do this before making any webservice
