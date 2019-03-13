@@ -1,7 +1,4 @@
 [![Build Status](https://travis-ci.org/kianmeng/webservice-restcountries.svg?branch=master)](https://travis-ci.org/kianmeng/webservice-restcountries)
-[![codecov](https://codecov.io/gh/kianmeng/webservice-restcountries/branch/master/graph/badge.svg)](https://codecov.io/gh/kianmeng/webservice-restcountries)
-[![Coverage Status](https://coveralls.io/repos/kianmeng/webservice-restcountries/badge.svg?branch=master)](https://coveralls.io/r/kianmeng/webservice-restcountries?branch=master)
-[![Kwalitee status](http://cpants.cpanauthors.org/dist/WebService-RESTCountries.png)](http://cpants.charsbar.org/dist/overview/WebService-RESTCountries)
 [![Cpan license](https://img.shields.io/cpan/l/WebService-RESTCountries.svg)](https://metacpan.org/release/WebService-RESTCountries)
 [![Cpan version](https://img.shields.io/cpan/v/WebService-RESTCountries.svg)](https://metacpan.org/release/WebService-RESTCountries)
 
