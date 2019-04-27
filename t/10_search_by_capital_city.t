@@ -6,27 +6,31 @@ use Test::More;
 
 use WebService::RESTCountries;
 
-my ($got, $expected);
+my $got;
 
 my $api = WebService::RESTCountries->new(
     cache => CHI->new(
         driver => 'File',
         namespace => 'restcountries',
         root_dir => $ENV{PWD} . '/t/cache/',
-    )
-);
+    ));
 
 $got = $api->search_by_capital_city('Kuala Lumpur');
 is($got->{name}, 'Malaysia', 'expect country found by full capital city name');
 
-$got = $api->search_by_capital_city("Saint John's");
-is($got->{name}, 'Antigua and Barbuda', 'expect country found by full capital city name with symbol');
+$got = $api->search_by_capital_city(q|Saint John's|);
+is(
+    $got->{name},
+    'Antigua and Barbuda',
+    'expect country found by full capital city name with symbol'
+);
 
 $got = $api->search_by_capital_city('');
-is(%$got, 0, 'expect no country found by capital city');
+is(%{$got}, 0, 'expect no country found by capital city');
 
 $got = $api->search_by_capital_city('Kuala');
-is($got->{name}, 'Malaysia', 'expect country found by partial capital city name');
+is($got->{name}, 'Malaysia',
+    'expect country found by partial capital city name');
 
 my $expected_fields = ['capital', 'currencies', 'name'];
 $api->fields($expected_fields);

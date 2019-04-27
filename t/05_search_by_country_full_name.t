@@ -13,8 +13,7 @@ my $api = WebService::RESTCountries->new(
         driver => 'File',
         namespace => 'restcountries',
         root_dir => $ENV{PWD} . '/t/cache/',
-    )
-);
+    ));
 
 my $test_data = {
     Malays => undef,
@@ -26,7 +25,7 @@ my $test_data = {
     'São Tomé and Príncipe' => 'Sao Tome and Principe',
 };
 
-foreach my $k (keys %$test_data) {
+foreach my $k (keys %{$test_data}) {
     $got = $api->search_by_country_full_name($k);
 
     my $status = ($got->{name}) ? 'found' : 'not found';

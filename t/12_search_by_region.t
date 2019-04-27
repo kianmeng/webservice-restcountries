@@ -13,8 +13,7 @@ my $api = WebService::RESTCountries->new(
         driver => 'File',
         namespace => 'restcountries',
         root_dir => $ENV{PWD} . '/t/cache/',
-    )
-);
+    ));
 
 my $countries_counts_per = {
     Africa => 60,
@@ -24,9 +23,13 @@ my $countries_counts_per = {
     Oceania => 27,
 };
 
-foreach my $region (keys %$countries_counts_per) {
+foreach my $region (keys %{$countries_counts_per}) {
     $got = $api->search_by_region($region);
-    is(scalar @$got, $countries_counts_per->{$region}, "expect countries counts per region: $region match");
+    is(
+        scalar @{$got},
+        $countries_counts_per->{$region},
+        "expect countries counts per region: $region match"
+    );
 }
 
 $got = $api->search_by_region('milky way');

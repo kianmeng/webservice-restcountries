@@ -13,8 +13,7 @@ my $api = WebService::RESTCountries->new(
         driver => 'File',
         namespace => 'restcountries',
         root_dir => $ENV{PWD} . '/t/cache/',
-    )
-);
+    ));
 
 $got = $api->search_by_currency('MYR');
 is($got->{name}, 'Malaysia', 'expect country found by currency code');

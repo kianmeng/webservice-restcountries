@@ -1,5 +1,5 @@
 {
-   "abstract" : "A Perl module to interface with the REST Countries (restcountries.eu) webservice.",
+   "abstract" : "Perl module for using REST Countries (http://restcountries.eu) webservice.",
    "author" : [
       "Kian Meng, Ang."
    ],
@@ -54,12 +54,14 @@
             "CHI" : "0",
             "Data::Serializer" : "0",
             "Digest::MD5" : "0",
+            "HTTP::Status" : "0",
             "JSON" : "0",
             "Moo" : "0",
             "REST::Client" : "0",
             "Role::REST::Client" : "0",
             "Sereal" : "0",
             "Types::Standard" : "0",
+            "autodie" : "0",
             "namespace::clean" : "0",
             "strictures" : "2"
          }
@@ -96,9 +98,9 @@
    },
    "version" : "0.3",
    "x_contributors" : [
-      "Kian-Meng, Ang <kianmeng@users.noreply.github.com>"
+      "Kian Meng, Ang <kianmeng@cpan.org>"
    ],
-   "x_generated_by_perl" : "v5.26.2",
+   "x_generated_by_perl" : "v5.28.1",
    "x_serialization_backend" : "JSON::XS version 3.04",
    "x_static_install" : 1
 }

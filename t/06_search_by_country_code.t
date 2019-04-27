@@ -13,14 +13,15 @@ my $api = WebService::RESTCountries->new(
         driver => 'File',
         namespace => 'restcountries',
         root_dir => $ENV{PWD} . '/t/cache/',
-    )
-);
+    ));
 
 $got = $api->search_by_country_code('MY');
-is($got->{capital}, "Kuala Lumpur", 'expect country found by two-letters country code');
+is($got->{capital}, 'Kuala Lumpur',
+    'expect country found by two-letters country code');
 
 $got = $api->search_by_country_code('MYS');
-is($got->{capital}, "Kuala Lumpur", 'expect country found by three-letters country code');
+is($got->{capital}, 'Kuala Lumpur',
+    'expect country found by three-letters country code');
 
 my $expected_fields = ['capital', 'currencies', 'name'];
 $api->fields($expected_fields);

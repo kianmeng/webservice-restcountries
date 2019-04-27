@@ -1,18 +1,21 @@
+requires 'autodie';
+requires 'namespace::clean';
+requires 'strictures', '2';
+
 requires 'CHI';
 requires 'Data::Serializer';
 requires 'Digest::MD5';
+requires 'HTTP::Status';
 requires 'JSON';
 requires 'Moo';
-requires 'namespace::clean';
 requires 'REST::Client';
 requires 'Role::REST::Client';
 requires 'Sereal';
-requires 'strictures', '2';
 requires 'Types::Standard';
 
 on configure => sub {
-    requires 'Module::Build::Tiny', '0.034';
     requires 'perl', '5.008005';
+    requires 'Module::Build::Tiny', '0.034';
 };
 
 on test => sub {

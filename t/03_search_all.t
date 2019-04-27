@@ -6,18 +6,17 @@ use Test::More;
 
 use WebService::RESTCountries;
 
-my ($got, $expected);
+my ($got, $total_country) = ('', 250);
 
 my $api = WebService::RESTCountries->new(
     cache => CHI->new(
         driver => 'File',
         namespace => 'restcountries',
         root_dir => $ENV{PWD} . '/t/cache/',
-    )
-);
+    ));
 
 $got = $api->search_all();
-is(scalar @$got, 250, 'expect 250 countries found');
+is(scalar @{$got}, $total_country, qq|expect $total_country countries found|);
 
 my $expected_fields = ['capital', 'currencies', 'name'];
 $api->fields($expected_fields);

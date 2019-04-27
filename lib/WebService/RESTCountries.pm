@@ -1,11 +1,13 @@
 package WebService::RESTCountries;
 
-use utf8;
-use strictures 2;
+use autodie qw(:all);
 use namespace::clean;
+use strictures 2;
+use utf8;
 
 use CHI;
 use Digest::MD5 qw(md5_hex);
+use HTTP::Status qw(:constants);
 use Moo;
 use Sereal qw(encode_sereal decode_sereal);
 use Types::Standard qw(Str ArrayRef);
@@ -27,8 +29,8 @@ has fields => (
 );
 
 has cache => (
-    is      => 'rw',
-    lazy    => 1,
+    is => 'rw',
+    lazy => 1,
     builder => 1,
 );
 
@@ -46,7 +48,7 @@ sub BUILD {
     my ($self) = @_;
 
     $self->set_persistent_header('User-Agent' => __PACKAGE__ . q| |
-          . ($WebService::RESTCountries::VERSION || q||));
+            . ($WebService::RESTCountries::VERSION || q||));
     $self->server($self->api_url);
 
     return $self;
@@ -57,20 +59,22 @@ sub ping {
 
     my $response = $self->user_agent->request('HEAD', $self->api_url);
 
-    return ($response->code == 200) ? 1 : 0;
+    return ($response->code == HTTP_OK) ? 1 : 0;
 }
 
 sub download {
     my ($self, $file_name) = @_;
 
-    $file_name ||= 'RESTCountries.json';
+    $file_name //= 'RESTCountries.json';
 
     my $uri = $self->api_url . 'all';
     my $response = $self->user_agent->request('GET', $uri);
 
-    open(my $fh, '>', $file_name) or die $!;
-    print $fh $response->decoded_content;
-    close($fh);
+    open my $fh, '>', $file_name;
+    print {$fh} $response->decoded_content;
+    close $fh;
+
+    return;
 }
 
 sub search_all {
@@ -100,7 +104,7 @@ sub search_by_country_full_name {
 sub search_by_country_code {
     my ($self, $country_code) = @_;
 
-    $country_code = lc($country_code);
+    $country_code = lc $country_code;
 
     my $result = $self->_request(qq|alpha/$country_code|);
 
@@ -110,13 +114,11 @@ sub search_by_country_code {
 sub search_by_country_codes {
     my ($self, $country_codes) = @_;
 
-    my @lowercase_country_codes = map { lc } @$country_codes;
+    my @lowercase_country_codes = map { lc } @{$country_codes};
 
-    my $query = {
-        codes => join(';', @lowercase_country_codes)
-    };
+    my $query = {codes => join q|;|, @lowercase_country_codes};
 
-    my $result = $self->_request(qq|alpha|, $query);
+    my $result = $self->_request(q|alpha|, $query);
 
     return $result if (defined $result->[0]);
 
@@ -126,7 +128,7 @@ sub search_by_country_codes {
 sub search_by_currency {
     my ($self, $currency) = @_;
 
-    $currency = lc($currency);
+    $currency = lc $currency;
 
     my $result = $self->_request(qq|currency/$currency|);
 
@@ -136,7 +138,7 @@ sub search_by_currency {
 sub search_by_language_code {
     my ($self, $language_code) = @_;
 
-    $language_code = lc($language_code);
+    $language_code = lc $language_code;
 
     return $self->_request(qq|lang/$language_code|);
 }
@@ -162,7 +164,7 @@ sub search_by_calling_code {
 sub search_by_region {
     my ($self, $region) = @_;
 
-    $region = lc($region);
+    $region = lc $region;
 
     return $self->_request(qq|region/$region|);
 }
@@ -170,7 +172,7 @@ sub search_by_region {
 sub search_by_regional_bloc {
     my ($self, $regional_bloc) = @_;
 
-    $regional_bloc = lc($regional_bloc);
+    $regional_bloc = lc $regional_bloc;
 
     return $self->_request(qq|regionalbloc/$regional_bloc|);
 }
@@ -184,12 +186,12 @@ sub _request {
 
     # ?fields=name;capital;currencies
     if (scalar @{$self->fields}) {
-        $queries->{fields} = join(';', @{$self->fields});
+        $queries->{fields} = join q|;|, @{$self->fields};
     }
 
     # In case the api_url was updated.
     $self->server($self->api_url);
-    $self->type(qq|application/json|);
+    $self->type(q|application/json|);
 
     my $response_data;
     my $cache_key = md5_hex($endpoint . encode_sereal($queries));
@@ -208,16 +210,17 @@ sub _request {
     return $response_data;
 }
 
-
 1;
 __END__
 
 =encoding utf-8
 
+=for stopwords restcountries.eu efta caricom pa au usan eeu al asean cais cefta nafta saarc
+
 =head1 NAME
 
-WebService::RESTCountries - A Perl module to interface with the REST Countries
-(restcountries.eu) webservice.
+WebService::RESTCountries - Perl module for using REST Countries
+(http://restcountries.eu) webservice.
 
 =head1 SYNOPSIS
 
@@ -233,7 +236,7 @@ Countries API (restcountries.eu).
 
 =head1 DEVELOPMENT
 
-Source repo at L<https://github.com/kianmeng/webservice-restcountries|https://github.com/kianmeng/webservice-restcountries>.
+Source repository at L<https://github.com/kianmeng/webservice-restcountries|https://github.com/kianmeng/webservice-restcountries>.
 
 =head2 Docker
 

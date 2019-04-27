@@ -13,11 +13,10 @@ my $api = WebService::RESTCountries->new(
         driver => 'File',
         namespace => 'restcountries',
         root_dir => $ENV{PWD} . '/t/cache/',
-    )
-);
+    ));
 
 $got = $api->search_by_language_code('ms');
-is(scalar @$got, 2, 'expect countries found by language code');
+is(scalar @{$got}, 2, 'expect countries found by language code');
 
 $got = $api->search_by_language_code('mss');
 $expected = {

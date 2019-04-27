@@ -13,17 +13,18 @@ my $api = WebService::RESTCountries->new(
         driver => 'File',
         namespace => 'restcountries',
         root_dir => $ENV{PWD} . '/t/cache/',
-    )
-);
+    ));
 
 $got = $api->search_by_country_codes(['MY', 'SG']);
-is(scalar @$got, 2, 'expect 2 countries found by two-letters country code');
+is(scalar @{$got}, 2, 'expect 2 countries found by two-letters country code');
 
 $got = $api->search_by_country_codes(['MYS', 'SGP']);
-is(scalar @$got, 2, 'expect 2 countries found by three-letters country code');
+is(scalar @{$got}, 2, 'expect 2 countries found by three-letters country code');
 
 $got = $api->search_by_country_codes(['MY', 'SGP']);
-is(scalar @$got, 2, 'expect 2 countries found by two-letters and three-letters country code');
+is(scalar @{$got},
+    2,
+    'expect 2 countries found by two-letters and three-letters country code');
 
 $got = $api->search_by_country_codes(['SGG']);
 is($got, undef, 'expect no country found by invalid country code');

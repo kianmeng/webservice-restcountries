@@ -13,8 +13,7 @@ my $api = WebService::RESTCountries->new(
         driver => 'File',
         namespace => 'restcountries',
         root_dir => $ENV{PWD} . '/t/cache/',
-    )
-);
+    ));
 
 my $countries_counts_per = {
     AL => 22,
@@ -32,9 +31,13 @@ my $countries_counts_per = {
     USAN => 15,
 };
 
-foreach my $regional_bloc (keys %$countries_counts_per) {
+foreach my $regional_bloc (keys %{$countries_counts_per}) {
     $got = $api->search_by_regional_bloc($regional_bloc);
-    is(scalar @$got, $countries_counts_per->{$regional_bloc}, "expect countries counts per regional bloc: $regional_bloc match");
+    is(
+        scalar @{$got},
+        $countries_counts_per->{$regional_bloc},
+        "expect countries counts per regional bloc: $regional_bloc match"
+    );
 }
 
 $got = $api->search_by_regional_bloc('andromeda');

@@ -17,5 +17,4 @@ $api->api_url('http://foobar.localhost');
 $got = $api->ping();
 is($got, 0, 'expect API endpoint is down');
 
-
 done_testing;

@@ -4,8 +4,8 @@
 
 # NAME
 
-WebService::RESTCountries - A Perl module to interface with the REST Countries
-(restcountries.eu) webservice.
+WebService::RESTCountries - Perl module for using REST Countries
+(http://restcountries.eu) webservice.
 
 # SYNOPSIS
 
@@ -21,7 +21,7 @@ Countries API (restcountries.eu).
 
 # DEVELOPMENT
 
-Source repo at [https://github.com/kianmeng/webservice-restcountries](https://github.com/kianmeng/webservice-restcountries).
+Source repository at [https://github.com/kianmeng/webservice-restcountries](https://github.com/kianmeng/webservice-restcountries).
 
 ## Docker
 
