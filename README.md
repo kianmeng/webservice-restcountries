@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/kianmeng/webservice-restcountries.svg?branch=master)](https://travis-ci.org/kianmeng/webservice-restcountries)
 [![Cpan license](https://img.shields.io/cpan/l/WebService-RESTCountries.svg)](https://metacpan.org/release/WebService-RESTCountries)
 [![Cpan version](https://img.shields.io/cpan/v/WebService-RESTCountries.svg)](https://metacpan.org/release/WebService-RESTCountries)
 
