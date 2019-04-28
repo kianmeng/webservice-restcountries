@@ -219,6 +219,10 @@ ASEAN, CAIS, CEFTA, NAFTA, SAARC. Regional bloc name is case insensitive.
     $api->search_by_region_bloc("EU");
     $api->search_by_regional_bloc("asean");
 
+# AUTHOR
+
+Kian Meng, Ang <kianmeng@cpan.org>
+
 # COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2018 by Kian Meng, Ang.
@@ -226,7 +230,3 @@ This software is Copyright (c) 2018 by Kian Meng, Ang.
 This is free software, licensed under:
 
     The Artistic License 2.0 (GPL Compatible)
-
-# AUTHOR
-
-Kian Meng, Ang <kianmeng@users.noreply.github.com>
