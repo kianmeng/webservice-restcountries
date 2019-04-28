@@ -13,7 +13,7 @@ my $api = WebService::RESTCountries->new;
 $got = $api->ping();
 is($got, 1, 'expect API endpoint is up');
 
-$api->api_url('http://foobar.localhost');
+$api->api_url('http://foo.bar.baz');
 $got = $api->ping();
 is($got, 0, 'expect API endpoint is down');
 
